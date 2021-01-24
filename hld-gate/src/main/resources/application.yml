@@ -1,0 +1,15 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: hld-gate
+
+eureka:
+  instance:
+    statusPageUrlPath: /actuator/info
+    healthCheckUrlPath: /actuator/health
+    home-page-url-path: /
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

@@ -1,0 +1,15 @@
+server:
+  port: 8666
+
+spring:
+  application:
+    name: hld-auth
+
+eureka:
+  instance:
+    statusPageUrlPath: /actuator/info
+    healthCheckUrlPath: /actuator/health
+    home-page-url-path: /
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
