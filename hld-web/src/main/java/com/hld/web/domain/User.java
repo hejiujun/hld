@@ -15,7 +15,9 @@ import java.util.Date;
 @AllArgsConstructor
 public class User extends BaseEntity {
     private static final long serialVersionUID = 1L;
-    
+
+    private Long id;
+
     private String avatar;
     
     private String account;
@@ -26,19 +28,19 @@ public class User extends BaseEntity {
     
     private Date birthday;
     
-    private Integer sex;
+    private String gender;
     
     private String email;
     
     private String phone;
     
-    private String roleid;
+    private Long roleId;
     
-    private Long deptid;
+    private Long deptId;
     
-    private Integer status;
+    private String status;
     
-    private Integer version;
+    private String version;
 
     public User(String account, String password, String name, String phone) {
         this.account = account;

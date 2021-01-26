@@ -12,6 +12,7 @@ spring:
     mode: HTML
     encoding: UTF-8
     cache: false
+    suffix: .html
   messages:
     basename: static/i18n/messages
   jackson:
@@ -65,7 +66,7 @@ logging:
     org.springframework: warn
 
 mybatis:
-  type-aliases-package: com.hld
+  type-aliases-package: com.hld.web.domain
   mapper-locations: classpath*:mapper/*Mapper.xml
   config-location: calsspath:mybatis/mybatis-config.xml
 

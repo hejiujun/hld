@@ -11,12 +11,12 @@ create table v_user
     avatar      varchar(100) default null comment '头像',
     account     varchar(45) not null comment '账号',
     password    varchar(64) not null comment '密码',
+    salt        varchar(10) not null comment '盐值',
     name        varchar(45)  default null comment '名字',
     birthday    datetime     default null comment '生日',
     gender      char(1)      default null comment '性别（1：男 2：女）',
     email       varchar(45)  default null comment '电子邮件',
     phone       varchar(13)  default null comment '电话',
-    role_id     bigint(20) default null comment '角色id',
     dept_id     bigint(20) default null comment '部门id',
     status      char(1)      default null comment '状态(1：启用  2：冻结  3：删除）',
     version     varchar(10)  default null comment '保留字段',
@@ -103,18 +103,12 @@ create table v_menu
 ) engine=innodb auto_increment=1 comment = '菜单表';
 
 
-drop table if exists v_role_menu;
-create table v_role_menu
+drop table if exists v_menu_role;
+create table v_menu_role
 (
-    id          bigint(20) not null auto_increment comment '主键',
-    menu_id     bigint(20) default null comment '菜单id',
-    role_id     bigint(20) default null comment '角色id',
-    create_time datetime     default null comment '创建时间',
-    create_by   bigint(20) default null comment '创建人',
-    update_time datetime     default null comment '更新时间',
-    update_by   bigint(20) default null comment '更新时间',
-    remark      varchar(500) default null comment '备注',
-    primary key (id)
+    menu_id bigint(20) default null comment '菜单id',
+    role_id bigint(20) default null comment '角色id',
+    primary key (menu_id, role_id)
 ) engine=innodb auto_increment=1 comment = '角色和菜单关联表';
 
 
@@ -137,7 +131,13 @@ create table v_role
     primary key (id)
 ) engine=innodb auto_increment=1 comment = '角色表';
 
-
+drop table if exists v_user_role;
+create table v_user_role
+(
+    user_id bigint(20) not null comment '用户ID',
+    role_id bigint(20) not null comment '角色ID',
+    primary key (user_id, role_id)
+) engine=innodb comment = '用户和角色关联表';
 
 drop table if exists v_bank;
 create table v_bank
