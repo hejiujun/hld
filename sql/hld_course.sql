@@ -1,8 +1,6 @@
-create
-database /*!32312 IF NOT EXISTS */ hld /*!40100 character set utf8 collate utf8_general_ci*/;
+create database /*!32312 IF NOT EXISTS */ hld /*!40100 character set utf8 collate utf8_general_ci*/;
 
-use
-hld
+use hld
 
 drop table if exists v_user;
 create table v_user
@@ -45,7 +43,7 @@ create table v_dept
 (
     id           bigint(20) not null auto_increment comment '主键',
     num          int          default null comment '排序',
-    pid          bigint       default null comment '父部门id',
+    pid          bigint(20)       default null comment '父部门id',
     pids         varchar(255) default null comment '父级ids',
     psimple_name varchar(45) not null comment '父简称',
     simple_name  varchar(45) not null comment '简称',

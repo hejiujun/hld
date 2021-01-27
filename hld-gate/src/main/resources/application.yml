@@ -4,6 +4,37 @@ server:
 spring:
   application:
     name: hld-gate
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    jedis:
+      pool:
+        max-active: 20
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          route-id-prefix: /api
+      routes:
+        - id: hld-auth
+          uri: lb://hld-auth
+          order: 8000
+          predicates:
+          -Path=/auth/**
+          filters:
+          -StripPrefix=2
+        - id: hld-web
+          uri: lb://hld-web
+          order: 8001
+          predicates:
+          -Path=/web/**
+          filters:
+          -StripPrefix=2
 
 eureka:
   instance:
@@ -13,3 +44,14 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+
+logging:
+  level:
+    com.hld: info
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+

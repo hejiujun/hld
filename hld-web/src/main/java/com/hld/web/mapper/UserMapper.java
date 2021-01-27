@@ -3,12 +3,12 @@ package com.hld.web.mapper;
 import java.util.List;
 import com.hld.web.domain.User;
 
+
 /**
  * 用户表 数据层
  *
  */
-public interface UserMapper
-{
+public interface UserMapper {
     /**
      * 根据条件分页查询用户列表
      * 
@@ -39,7 +39,7 @@ public interface UserMapper
      * @param userName 用户名
      * @return 用户对象信息
      */
-    public User selectUserByLoginName(String userName);
+    public User selectUserByAccount(String userName);
 
     /**
      * 通过手机号码查询用户
@@ -47,7 +47,7 @@ public interface UserMapper
      * @param phoneNumber 手机号码
      * @return 用户对象信息
      */
-    public User selectUserByPhoneNumber(String phoneNumber);
+    public User selectUserByPhone(String phoneNumber);
 
     /**
      * 通过邮箱查询用户
@@ -103,7 +103,7 @@ public interface UserMapper
      * @param loginName 登录名称
      * @return 结果
      */
-    public int checkLoginNameUnique(String loginName);
+    public int checkAccountUnique(String loginName);
 
     /**
      * 校验手机号码是否唯一
